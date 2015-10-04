@@ -1,0 +1,5 @@
+{{#each model as |musician|}}
+  <div>{{#link-to "musicians.show" musician.id classNames="btn btn-default"}}{{musician.fullName}}{{/link-to}}</div>
+  <br>
+{{/each}}
+{{outlet}}
