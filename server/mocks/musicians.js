@@ -9,11 +9,15 @@ module.exports = function(app) {
   ];
 
   var getMusician = function (identifier) {
+    var neededMusician;
+
     musicians.forEach(function (musician) {
       if (musician.id == identifier) {
-        return musician;
+        neededMusician = musician;
       }
     });
+
+    return neededMusician;
   };
 
   musiciansRouter.get('/', function(req, res) {
@@ -23,7 +27,7 @@ module.exports = function(app) {
       });
     } else {
       res.send({
-        'musician': {id: 1, name: "Ethan", surname: "Reilly", age: 44, track_ids: [1, 2, 3]}
+        'musician': getMusician(req.query.id)
       });
     }
   });
